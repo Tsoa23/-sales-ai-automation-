@@ -1,0 +1,1093 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#03162f">
+
+  <title>TastyBite | Restaurant</title>
+
+  <meta name="description"
+        content="Discover delicious meals, fresh ingredients and an unforgettable restaurant experience.">
+
+  <!-- GOOGLE FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ================= CSS ================= -->
+  <style>
+    :root {
+      --navy: #06234b;
+      --dark: #03162f;
+      --yellow: #ffd21f;
+      --white: #ffffff;
+      --light: #f5f7fb;
+      --text: #152746;
+      --muted: #68758b;
+      --radius: 12px;
+      --shadow: 0 8px 24px rgba(5, 30, 65, .10);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1140px, 90%);
+      margin-inline: auto;
+    }
+
+    section {
+      scroll-margin-top: 80px;
+    }
+
+    /* HEADER */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      color: var(--white);
+      background: var(--dark);
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 1.55rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .logo span:last-child {
+      color: var(--yellow);
+    }
+
+    .logo-icon {
+      font-size: 1.7rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 10px 0;
+      font-size: .9rem;
+      transition: color .25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--yellow);
+    }
+
+    .menu-toggle {
+      display: none;
+      padding: 5px 10px;
+      color: white;
+      background: transparent;
+      border: 0;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* BUTTONS */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px 23px;
+      border: none;
+      border-radius: 50px;
+      background: var(--yellow);
+      color: var(--dark);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .25s, background .25s;
+    }
+
+    .btn:hover {
+      background: #ffe15c;
+      transform: translateY(-2px);
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      color: white;
+      background:
+        url("https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(2, 15, 32, .92),
+        rgba(2, 15, 32, .58),
+        rgba(2, 15, 32, .12)
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      padding-block: 65px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 4.6rem);
+      font-weight: 800;
+      line-height: 1.12;
+    }
+
+    .hero h1 span {
+      color: var(--yellow);
+    }
+
+    .hero p {
+      max-width: 450px;
+      margin: 18px 0 26px;
+      color: #f0f2f5;
+    }
+
+    /* GENERAL SECTIONS */
+
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .section-line {
+      display: block;
+      width: 48px;
+      height: 4px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      background: var(--yellow);
+    }
+
+    .section-heading .section-line {
+      margin-inline: auto;
+    }
+
+    .section-heading h2,
+    .about-content h2,
+    .contact-info h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .section-heading p {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    /* MENU */
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .menu-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow);
+      transition: transform .25s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .menu-card img {
+      height: 185px;
+    }
+
+    .menu-info {
+      padding: 14px;
+    }
+
+    .menu-info h3 {
+      font-size: .95rem;
+      line-height: 1.5;
+    }
+
+    .price {
+      margin-top: 5px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    /* ABOUT */
+
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 360px;
+      color: white;
+      background: var(--navy);
+    }
+
+    .about-image {
+      min-height: 360px;
+    }
+
+    .about-image img {
+      height: 100%;
+      min-height: 360px;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 45px clamp(25px, 6vw, 75px);
+    }
+
+    .about-content h2 {
+      margin-bottom: 15px;
+    }
+
+    .about-content p {
+      margin-bottom: 24px;
+      color: #e0e7f2;
+    }
+
+    /* GALLERY */
+
+    .gallery-section {
+      background: var(--light);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid a {
+      overflow: hidden;
+      display: block;
+      aspect-ratio: 3 / 2;
+      border-radius: var(--radius);
+    }
+
+    .gallery-grid img {
+      height: 100%;
+      transition: transform .4s;
+    }
+
+    .gallery-grid a:hover img {
+      transform: scale(1.06);
+    }
+
+    /* CONTACT */
+
+    .contact-section {
+      position: relative;
+      padding: 70px 0;
+      color: white;
+      background:
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+    }
+
+    .contact-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(2, 19, 43, .86);
+    }
+
+    .contact-container {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .contact-info h2 {
+      margin-bottom: 14px;
+    }
+
+    .contact-info > p {
+      margin-bottom: 24px;
+      color: #e0e7f2;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .contact-details li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-icon {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--yellow);
+      color: var(--dark);
+    }
+
+    .reservation-form {
+      display: grid;
+      gap: 9px;
+      padding: 25px;
+      border-radius: var(--radius);
+      background: white;
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+
+    .reservation-form label {
+      font-size: .85rem;
+      font-weight: 600;
+    }
+
+    .reservation-form input,
+    .reservation-form select,
+    .reservation-form textarea {
+      width: 100%;
+      min-width: 0;
+      padding: 11px 12px;
+      border: 1px solid #dfe4ed;
+      border-radius: 7px;
+      outline: none;
+      background: #fbfcfe;
+      color: var(--text);
+    }
+
+    .reservation-form input:focus,
+    .reservation-form select:focus,
+    .reservation-form textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(6, 35, 75, .09);
+    }
+
+    .reservation-form textarea {
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .form-status {
+      color: var(--navy);
+      font-size: .83rem;
+      overflow-wrap: anywhere;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 22px 0;
+      background: var(--dark);
+      color: white;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .footer-content p {
+      color: #cbd5e1;
+      font-size: .78rem;
+      text-align: center;
+    }
+
+    .back-top {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    /* RESPONSIVE DESIGN */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 14px;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .menu-card img {
+        height: 210px;
+      }
+
+      .contact-container {
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      .navbar {
+        min-height: 66px;
+      }
+
+      .logo {
+        font-size: 1.4rem;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 20px 18px;
+        background: var(--dark);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px;
+      }
+
+      .hero {
+        min-height: 420px;
+        background-position: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.3rem, 10vw, 3.5rem);
+      }
+
+      .section {
+        padding: 52px 0;
+      }
+
+      .menu-grid {
+        gap: 13px;
+      }
+
+      .menu-card img {
+        height: 150px;
+      }
+
+      .menu-info {
+        padding: 11px;
+      }
+
+      .menu-info h3 {
+        font-size: .85rem;
+      }
+
+      .about-section {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image,
+      .about-image img {
+        height: 250px;
+        min-height: 250px;
+      }
+
+      .about-content {
+        padding: 32px 24px 40px;
+      }
+
+      .gallery-grid {
+        gap: 12px;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .reservation-form {
+        padding: 20px 16px;
+      }
+
+      .footer-content {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .footer-content .logo {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .menu-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-card img {
+        height: 210px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================ HEADER ================ -->
+
+  <header class="header" id="home">
+    <nav class="navbar container">
+
+      <a href="#home" class="logo">
+        <span class="logo-icon">🍴</span>
+        Tasty<span>Bite</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="nav-links">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ================ HERO ================ -->
+
+    <section class="hero">
+      <div class="container hero-content">
+
+        <span class="eyebrow">WELCOME TO TASTYBITE</span>
+
+        <h1>
+          Good Food,<br>
+          <span>Great Vibes</span>
+        </h1>
+
+        <p>
+          Fresh ingredients. Authentic taste.
+          An unforgettable dining experience.
+        </p>
+
+        <a href="#menu" class="btn">
+          View Menu <span>→</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ================ MENU ================ -->
+
+    <section class="section" id="menu">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="section-line"></span>
+          <h2>Our Menu</h2>
+          <p>Delicious meals, made with love.</p>
+        </div>
+
+        <div class="menu-grid">
+
+          <article class="menu-card">
+            <img
+              src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=700&q=80"
+              alt="Margherita Pizza"
+              loading="lazy">
+
+            <div class="menu-info">
+              <h3>Margherita Pizza</h3>
+              <p class="price">$12</p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <img
+              src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80"
+              alt="Pasta Alfredo"
+              loading="lazy">
+
+            <div class="menu-info">
+              <h3>Pasta Alfredo</h3>
+              <p class="price">$10</p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <img
+              src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"
+              alt="Classic Burger"
+              loading="lazy">
+
+            <div class="menu-info">
+              <h3>Classic Burger</h3>
+              <p class="price">$9</p>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <img
+              src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=700&q=80"
+              alt="Caesar Salad"
+              loading="lazy">
+
+            <div class="menu-info">
+              <h3>Caesar Salad</h3>
+              <p class="price">$8</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ ABOUT ================ -->
+
+    <section class="about-section" id="about">
+
+      <div class="about-image">
+        <img
+          src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=85"
+          alt="Chef préparant un repas"
+          loading="lazy">
+      </div>
+
+      <div class="about-content">
+        <span class="section-line"></span>
+
+        <h2>About Us</h2>
+
+        <p>
+          We serve delicious meals made from fresh,
+          local ingredients. Our passionate chefs combine
+          quality, creativity and authentic flavors to
+          make every meal special.
+        </p>
+
+        <a href="#gallery" class="btn">
+          Our Gallery <span>→</span>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ================ GALLERY ================ -->
+
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="section-line"></span>
+          <h2>Gallery</h2>
+          <p>A glimpse of our delicious moments.</p>
+        </div>
+
+        <div class="gallery-grid">
+
+          <a
+            href="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=90"
+            target="_blank"
+            rel="noopener noreferrer">
+            <img
+              src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
+              alt="Plat de viande"
+              loading="lazy">
+          </a>
+
+          <a
+            href="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=90"
+            target="_blank"
+            rel="noopener noreferrer">
+            <img
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+              alt="Intérieur du restaurant"
+              loading="lazy">
+          </a>
+
+          <a
+            href="https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?auto=format&fit=crop&w=1400&q=90"
+            target="_blank"
+            rel="noopener noreferrer">
+            <img
+              src="https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?auto=format&fit=crop&w=900&q=80"
+              alt="Repas gastronomique"
+              loading="lazy">
+          </a>
+
+          <a
+            href="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=90"
+            target="_blank"
+            rel="noopener noreferrer">
+            <img
+              src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80"
+              alt="Ambiance restaurant"
+              loading="lazy">
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ CONTACT ================ -->
+
+    <section class="contact-section" id="contact">
+      <div class="container contact-container">
+
+        <div class="contact-info">
+          <span class="section-line"></span>
+
+          <h2>Contact / Reservation</h2>
+
+          <p>
+            Book your table and enjoy a memorable
+            dining experience.
+          </p>
+
+          <ul class="contact-details">
+            <li>
+              <span class="contact-icon">☎</span>
+              <span>+261 34 00 000 00</span>
+            </li>
+
+            <li>
+              <span class="contact-icon">⌖</span>
+              <span>Antananarivo, Madagascar</span>
+            </li>
+
+            <li>
+              <span class="contact-icon">◷</span>
+              <span>Mon - Sun: 10:00 AM - 11:00 PM</span>
+            </li>
+          </ul>
+        </div>
+
+        <form class="reservation-form" id="reservation-form">
+
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            autocomplete="name"
+            required>
+
+          <label for="email">Your Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            autocomplete="email"
+            required>
+
+          <label for="date">Reservation Date</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            required>
+
+          <label for="guests">Number of Guests</label>
+          <select id="guests" name="guests" required>
+            <option value="">Choose guests</option>
+            <option value="1">1 person</option>
+            <option value="2">2 people</option>
+            <option value="3">3 people</option>
+            <option value="4">4 people</option>
+            <option value="5+">5+ people</option>
+          </select>
+
+          <label for="message">Your Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="3"
+            placeholder="Special requests..."></textarea>
+
+          <button type="submit" class="btn submit-btn">
+            Reserve Table <span>→</span>
+          </button>
+
+          <p class="form-status" id="form-status" role="status"></p>
+
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================ FOOTER ================ -->
+
+  <footer class="footer">
+    <div class="container footer-content">
+
+      <a href="#home" class="logo">
+        <span class="logo-icon">🍴</span>
+        Tasty<span>Bite</span>
+      </a>
+
+      <p>
+        © <span id="year"></span> TastyBite.
+        All rights reserved.
+      </p>
+
+      <a href="#home" class="back-top" aria-label="Back to top">
+        ↑
+      </a>
+
+    </div>
+  </footer>
+
+  <!-- ================ JAVASCRIPT ================ -->
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      // 1. MOBILE MENU
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+      const navItems = document.querySelectorAll(".nav-links a");
+
+      function closeMenu() {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+        menuToggle.textContent = "☰";
+      }
+
+      menuToggle.addEventListener("click", function () {
+        const isOpen = navLinks.classList.toggle("open");
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Fermer le menu" : "Ouvrir le menu"
+        );
+
+        menuToggle.textContent = isOpen ? "✕" : "☰";
+      });
+
+      navItems.forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+      });
+
+      document.addEventListener("click", function (event) {
+        if (
+          navLinks.classList.contains("open") &&
+          !navLinks.contains(event.target) &&
+          !menuToggle.contains(event.target)
+        ) {
+          closeMenu();
+        }
+      });
+
+      // 2. CURRENT YEAR
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+      // 3. PREVENT PAST DATES
+      const dateInput = document.getElementById("date");
+      const now = new Date();
+
+      const today = [
+        now.getFullYear(),
+        String(now.getMonth() + 1).padStart(2, "0"),
+        String(now.getDate()).padStart(2, "0")
+      ].join("-");
+
+      dateInput.min = today;
+
+      // 4. ACTIVE NAVIGATION LINK
+      const sections = document.querySelectorAll(
+        "main section[id], main section.hero, header[id]"
+      );
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+
+              const sectionId = entry.target.id;
+
+              navItems.forEach(function (link) {
+                const isActive = link.getAttribute("href") ===
+                  "#" + sectionId;
+
+                link.classList.toggle("active", isActive);
+              });
+
+              if (entry.target.classList.contains("hero")) {
+                navItems.forEach(function (link) {
+                  link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === "#home"
+                  );
+                });
+              }
+            });
+          },
+          { rootMargin: "-25% 0px -65% 0px" }
+        );
+
+        sections.forEach(function (section) {
+          observer.observe(section);
+        });
+      }
+
+      // 5. RESERVATION FORM DEMO
+      const form = document.getElementById("reservation-form");
+      const status = document.getElementById("form-status");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        status.textContent =
+          "Formulaire valide ! Aucune réservation n'a été envoyée : un backend est nécessaire.";
+
+        status.setAttribute("role", "status");
+      });
+
+    });
+  </script>
+
+</body>
+</html>
